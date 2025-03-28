@@ -1,13 +1,18 @@
 pipeline {
     agent {
-        docker { image 'node:14' }
+        docker { image 'ubuntu:20.04' }
     }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'npm install typescript'
+                sh '''
+                    apt-get update || true
+                    apt-get install -y sudo curl
+                    curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+                    sudo apt-get install -y nodejs npm
+                    '''
             }
         }
         stage('Test') {
