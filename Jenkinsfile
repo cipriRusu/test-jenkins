@@ -1,21 +1,9 @@
 pipeline {
     agent {
-        docker { image 'ubuntu:20.04' } 
+        docker { image 'node:14' }
     }
 
     stages {
-        stage('Install Node.js and npm') {
-            steps {
-                script {
-                    sh '''
-                    apt-get update
-                    apt-get install -y curl sudo
-                    curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
-                    apt-get install -y nodejs
-                    '''
-                }
-            }
-        }
         stage('Build') {
             steps {
                 echo 'Building..'
