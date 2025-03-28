@@ -4,6 +4,16 @@ pipeline {
     }
 
     stages {
+        stage('Install Node.js and npm') {
+            steps {
+                script {
+                    sh '''
+                    curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+                    sudo apt-get install -y nodejs
+                    '''
+                }
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
