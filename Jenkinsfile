@@ -8,8 +8,10 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-                    sudo apt-get install -y nodejs
+                    apt-get update
+                    apt-get install -y curl sudo
+                    curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+                    apt-get install -y nodejs
                     '''
                 }
             }
