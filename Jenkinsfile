@@ -1,6 +1,8 @@
 pipeline {
     agent {
-        docker { image 'ubuntu:20.04', args '--user root' }
+        docker { image 'ubuntu:20.04' 
+                 args '--user root' 
+                }
     }
 
     stages {
