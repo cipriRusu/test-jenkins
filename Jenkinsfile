@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'ubuntu:20.04' } 
+    }
 
     stages {
         stage('Build') {
